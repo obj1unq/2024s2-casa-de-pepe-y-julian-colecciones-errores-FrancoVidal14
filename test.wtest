@@ -1,0 +1,24 @@
+import cosas.*
+import casa.*
+
+describe "Test de casa" {
+  test "Test 1" {
+    casa.comprar(heladera)
+    casa.comprar(cama)
+    casa.comprar(plancha)
+    assert.that(casa.cantidadDeCosasCompradas() == 3)
+    assert.that(casa.tieneAlgun(mueble))
+    assert.that(casa.vieneDeComprar(electrodomestico))
+    assert.notThat(casa.vieneDeComprar(mueble))
+    assert.that(casa.esDerrochona())
+    assert.equals([heladera, plancha],casa.comprados(electrodomestico)) 
+    assert.equals([cama],casa.comprados(mueble)) 
+    assert.that(casa.comprados(electrodomestico).contains(heladera)) 
+    assert.that(casa.comprados(mueble).contains(cama)) 
+    assert.notThat(casa.tieneAlgun(comida))
+    assert.notThat(casa.malaEpoca())
+    assert.equals([tiraDeAsado, paqueteDeFideos], casa.queFaltaComprar([tiraDeAsado, plancha, paqueteDeFideos])) 
+    assert.that(casa.faltaComida())
+    assert.equals(#{electrodomestico, mueble}, casa.categoriasCompradas())
+  }
+}
